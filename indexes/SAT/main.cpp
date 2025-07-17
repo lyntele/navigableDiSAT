@@ -66,19 +66,20 @@ int main(int argc, char **argv)
 
 
     begin = clock();
-    cout << "pn=" << pn << endl;
+    cout << "Opening database: " << finame << endl;
     n = openDB(finame);
     cout << "obj number:" << n << endl;
     buildEnd = clock() - begin;
-    np = pn;
+    np = n; // 使用所有对象作为pivot
     if (!np || (np > n)) np = n;
-    printf("indexing %li objects out of %li...\n", np, n);
+    printf("indexing %i objects out of %i...\n", np, n);
     fprintf(f, "pivotnum: %d\n", np);
 
 
     cout<<"start building SAT......"<<endl;
     begin = clock();
     numDistances = 0;
+    cout << "Calling build with np=" << np << endl;
     S = build(finame, np, &argc, &argv); //build SAT
     buildEnd += clock() - begin;
     buildComp = numDistances;

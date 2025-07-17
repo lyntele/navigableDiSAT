@@ -131,13 +131,19 @@ void printobj (Obj obj)
 int openDB(char *name)
 {
 	FILE *f = fopen(name, "r");
+	if (!f) {
+		printf("Error: Cannot open file %s\n", name);
+		exit(1);
+	}
 	int dim, num, func;
 	fscanf(f, "%d %d %d\n", &dim, &num, &func);
+	printf("Reading database: dim=%d, num=%d, func=%d\n", dim, num, func);
 	if (func == 1) DB.df = L1D;
 	else if (func == 2) DB.df = L2D;
 	else DB.df = LiD;
 	DB.coords = dim;
 	DB.nnums = num;
+	printf("Allocating memory for %d vectors of %d dimensions\n", DB.nnums, DB.coords);
 	DB.nums = (float *)mymalloc((DB.nnums + 1) * sizeof(float)* DB.coords);
 	DB.nobj = (float *)mymalloc(DB.coords * sizeof(float));
 

@@ -260,7 +260,7 @@ Index build (char *dbname, int n, int *argc, char ***argv)
 			firstChild = maxIdCand;
 			dists.insert(dists.begin(), tmpDists.begin(), tmpDists.end());
 		}
-		tmpDists.swap(vector<double>());
+		tmpDists.clear();
 	}
 
 	newnode(G, root);
@@ -277,9 +277,9 @@ Index build (char *dbname, int n, int *argc, char ***argv)
 		index++;
 	}
 
-	dists.swap(vector<double>());
+	dists.clear();
 	distr (G,0,1);
-	cout << "SAT¹¹½¨Íê±Ï" << endl;
+	cout << "SATï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
 	prnstats((Index)G);
 	return (Index)G;
 }
