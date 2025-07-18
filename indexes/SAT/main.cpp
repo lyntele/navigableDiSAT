@@ -48,21 +48,31 @@ int main(int argc, char **argv)
 		memcpy(radius, r, sizeof(r));
 		mdim = 2;
 	}
-	else if (string(finame).find("integer") != -1) {
-		double r[] = { 2321, 2733, 3229, 3843, 4614, 5613, 7090 };
+	// else if (string(finame).find("integer") != -1) {
+	// 	double r[] = { 2321, 2733, 3229, 3843, 4614, 5613, 7090 };
+	// 	memcpy(radius, r, sizeof(r));
+	// 	mdim = 20;
+	// }
+	// else if (string(finame).find("mpeg_1M") != -1) {
+	// 	double r[] = { 3838, 4092, 4399, 4773, 5241, 5904, 7104 };
+	// 	memcpy(radius, r, sizeof(r));
+	// 	mdim = 282;
+	// }
+	// else if (string(finame).find("sf") != -1) {
+	// 	double r[] = { 100, 200, 300, 400, 500, 600, 700 };
+	// 	memcpy(radius, r, sizeof(r));
+	// }
+    // 和disat论文设置统一，分别设置0.01%,0.1%,1%的选取率
+    else if (string(finame).find("colors") != -1) {
+		double r[] = { 0.051768, 0.082514, 0.131163, 0, 0, 0, 0};
+		memcpy(radius, r, sizeof(r));
+		mdim = 112;
+	}
+    else if (string(finame).find("nasa") != -1) {
+		double r[] = { 0.12, 0.285, 0.53, 0, 0, 0, 0};
 		memcpy(radius, r, sizeof(r));
 		mdim = 20;
 	}
-	else if (string(finame).find("mpeg_1M") != -1) {
-		double r[] = { 3838, 4092, 4399, 4773, 5241, 5904, 7104 };
-		memcpy(radius, r, sizeof(r));
-		mdim = 282;
-	}
-	else if (string(finame).find("sf") != -1) {
-		double r[] = { 100, 200, 300, 400, 500, 600, 700 };
-		memcpy(radius, r, sizeof(r));
-	}
-
 
 
     begin = clock();
